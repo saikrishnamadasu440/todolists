@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit page</title>
+</head>
+<link rel="stylesheet" href="/css/edit.css">
+<body>
+    <h2 class="color-white">EDIT YOUR DETAILS</h2>
+    
+        
+    <form action="/edit-todolist?id=<%= todolist._id %>" method="POST">
+        <div class="form_class">
+        <div class="desc_Class">
+            <input type="text" name="desc"  value='<%= todolist.task %>' id="task2">
+        </div>
+        <div class="select_and_input">
+            <select name="category" id="category">
+                <option value="" disabled selected><%= todolist.category %></option>
+                <option>Personal</option>
+                <option>Work</option>
+                <option>Grocery</option>
+                <option>Fun</option>
+        
+            </select>
+            <input type="date" required name="date" value=<%= todolist.date %> id="dates">
+            
+    </div>
+        <button type="submit" class="edit-button"> Update</button>
+    </form>
+    </div>
+</body>
+</html>

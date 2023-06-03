@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7531243322.js" crossorigin="anonymous"></script>
+    <title><%= title  %></title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <h1> TODO APP</h1>
+    <div id = "outer">
+        <form action="/add-item" method="post">
+            <div id="desc">
+            <label for="task" id="desc-label">Description</label><br>
+            <input type="text" id="task" name ="task" placeholder="What do you need to do?" required>
+        </div>
+        <div id ="double">
+                <div id="cat">
+            <label for="category">CATEGORY</label>
+
+                <select name="category" id="category" required>
+                <option value="personal">Personal</option>
+                <option value="work">Work</option>
+                <option value="grocery">Grocery</option>
+                <option value="fun">Fun</option>
+                </select>
+            </div>
+            <div id="dates">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            </div>
+            <div id="btns">
+                
+                   
+                    <button type="submit" class="btn-styl" id="btn1"> <i class="fa-solid fa-plus"></i>  ADD TASK</button>
+                
+                    <div id="delete-btn">
+                
+                        
+                            <i class="fa-solid fa-trash" style="color:white ;"></i>DELETE TASK 
+                        
+                    </div>  
+            </div>
+            </form>
+    </div>
+    <div id="second">
+        
+            <% for(let i of todo_list) { %>
+            
+            
+                <div id="whole">
+                <div id="content">
+                <input type="checkbox" id="task-item" name="delechack" class="delechack" onclick="checkedOrNot()" uid = <%= i._id %>>
+                <div id="data"> 
+                    <div id="cont">
+                <p id=<%= i._id %>  uid = <%= i._id %> class="dispdsc"> <%= i.task %></p><br>
+                    <p   id=<%= i._id + i.date %> class="dueDate"  ><%= i.date %></p>
+                </div>
+                <a href="/editdata/?id=<%=i._id %>">
+                    <i class="fa-solid fa-pencil" style="margin-top: 9px; text-decoration: none; color: white;"></i>
+                </a>
+                </div>
+                </div>
+                <!-- <div id> -->
+                <div id="type">
+                   <p><%= i.category %></p> 
+                </div>
+            <!-- </div> -->
+            </div>
+             
+            
+            <% } %>
+        
+
+
+
+    </div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/js/script.js"></script>
+</html>
